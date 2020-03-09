@@ -12,7 +12,7 @@ You can configure the plugin to connect by direct serial connection on the host 
 
 ## Change history
 
-None
+Initial Release
 
 ## Requirements
 
