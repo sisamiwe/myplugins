@@ -25,6 +25,8 @@ import serial
 import re
 import threading
 from datetime import datetime
+import cherrypy
+from jinja2 import Environment, FileSystemLoader
 
 from . import commands
 
@@ -38,7 +40,7 @@ if '.'.join(VERSION.split('.', 2)[:2]) <= '1.5':
 class Viessmann(SmartPlugin):
 
     ALLOW_MULTIINSTANCE = False
-    PLUGIN_VERSION = '1.6.0'
+    PLUGIN_VERSION = '1.7.0'
 
     def __init__(self, sh, *args, **kwargs):
         # Get plugin parameter
@@ -83,7 +85,15 @@ class Viessmann(SmartPlugin):
             self.log_info('Loaded operating modes for Heating type \'{}\''.format(self._operatingmodes))
             self.log_info('Loaded system schemes for Heating type \'{}\''.format(self._systemschemes))
         else:
-            self.log_err('Sets for Heating type {} could not be found!'.format(self.heating_type))
+            sets = []
+            if self.heating_type not in commands.commandset:
+                sets += 'command'
+            if self.heating_type not in commands.operatingmodes:
+                sets += 'operating modes'
+            if self.heating_type not in commands.systemschemes:
+                sets += 'system schemes'
+
+            self.log_err('Sets {} for Heating type {} could not be found!'.format(", ".join(sets), self.heating_type))
             return None
 
         # Remember protocol config
@@ -309,8 +319,6 @@ class Viessmann(SmartPlugin):
                     self.log_debug('Reading of all values/items has been requested')
                     self.update_all_read_items()
 
-            pass
-
     def send_cyclic_cmds(self):
         # Read all cyclic commands
         currenttime = time.time()
@@ -393,6 +401,19 @@ class Viessmann(SmartPlugin):
         commandcode = (commandconf['addr']).lower()
         commandvaluebytes = commandconf['len']
         commandunit = commandconf['unit']
+
+        if commandunit == 'BA':
+
+            # try to convert BA string to byte value, setting str values will fail
+            # this will not work properly if multiple entries have the same value!
+            try:
+                value = int(dict(map(reversed, self._operatingmodes.items()))[value])
+                commandunit = 'IFNON'
+                commandsignage = False
+            except KeyError:
+                # value doesn't exist in operatingmodes. don't know what to do
+                raise Exception('Value {} not defined in operating modes for device {}'.format(value, self.heating_type))
+
         set_allowed = bool(commandconf['set'])
         unitconf = self._unitset[commandunit]
         self.log_debug('Unit defined to {} with config{}.'.format(commandunit, unitconf))
@@ -431,7 +452,7 @@ class Viessmann(SmartPlugin):
                                 for switching_time in value:
                                     an = self.encode_timer(switching_time["An"])
                                     aus = self.encode_timer(switching_time["Aus"])
-                                    #times += f"{an:02x}{aus:02x}"
+                                    # times += f"{an:02x}{aus:02x}"
                                     times += "{:02x}".format(an) + "{:02x}".format(aus)
                                 valuebytes = bytes.fromhex(times)
                                 self.log_debug('Created value bytes for type {} as hexstring: {} and as bytes: {}'.format(commandvalueresult, self.bytes2hexstring(valuebytes), valuebytes))
@@ -449,7 +470,7 @@ class Viessmann(SmartPlugin):
                             self.log_debug('Created value bytes for type {} as hexstring: {} and as bytes: {}'.format(commandvalueresult, self.bytes2hexstring(valuebytes), valuebytes))
                         else:
                             raise Exception('Type not definied for creating write command bytes')
-                            
+
                         # Calculate length of payload (telegram header for write with 5 byte + amount of valuebytes)
                         payloadlength = int(self._commandbyteswrite) + int(commandvaluebytes)
                         self.log_debug('Payload length is: {} bytes.'.format(payloadlength))
@@ -475,7 +496,7 @@ class Viessmann(SmartPlugin):
                     raise Exception('No value handed over')
             else:
                 raise Exception('Command at Heating is not allowed to be sent')
-            
+
         except Exception as e:
             self.log_debug('create_write_command failed with error: {}.'.format(e))
 
@@ -483,7 +504,7 @@ class Viessmann(SmartPlugin):
         if not self._connected:
             self.log_err('Not connected, trying to reconnect.')
             self.connect()
-            #return
+            # return
 
         try:
             self._lock.acquire()
@@ -513,7 +534,7 @@ class Viessmann(SmartPlugin):
                         elif chunk[:1] != self._acknowledge:
                             self.log_err('Received invalid chunk, not starting with ACK! response was: {}'.format(chunk))
                         else:
-                            #self.log_info('Received chunk! response was: {}, Hand over to parse_response now.format(chunk))
+                            # self.log_info('Received chunk! response was: {}, Hand over to parse_response now.format(chunk))
                             response_packet.extend(chunk)
                             self.parse_response(response_packet)
                     else:
@@ -543,7 +564,7 @@ class Viessmann(SmartPlugin):
         checksum = self.calc_checksum(response[1:len(response) - 1])  # first, cut first byte (ACK) and last byte (checksum) and then calculate checksum
         received_checksum = response[len(response) - 1]
         if (received_checksum != checksum):
-            self.log_err('Calculated checksum {} does not match received checksum of {}! Ignoring reponse.'.format(checksum, receivedchecksum))
+            self.log_err('Calculated checksum {} does not match received checksum of {}! Ignoring reponse.'.format(checksum, received_checksum))
             return
 
         # Extract command/address, valuebytes and valuebytecount out of response
@@ -582,7 +603,7 @@ class Viessmann(SmartPlugin):
                 timer = self.decode_timer(rawdatastring)
                 # fill list
                 timer = [{'An': on_time, 'Aus': off_time}
-                for on_time, off_time in zip(timer, timer)]
+                         for on_time, off_time in zip(timer, timer)]
                 value = timer
                 self.log_debug('Matched command {} and read transformed timer {} and byte length {}.'.format(commandname, value, commandvaluebytes))
                 # Split timer list and put it the child items, which were created by struct.timer in iso time format
@@ -591,7 +612,7 @@ class Viessmann(SmartPlugin):
                         child_item = str(child.id())
                         if child_item.endswith('an1'):
                             child(timer[0]['An'], self.get_shortname())
-                            #child(datetime.strptime(timer[0]['An'], '%H:%M').time().isoformat())
+                            # child(datetime.strptime(timer[0]['An'], '%H:%M').time().isoformat())
                         elif child_item.endswith('aus1'):
                             child(timer[0]['Aus'], self.get_shortname())
                         elif child_item.endswith('an2'):
@@ -716,7 +737,7 @@ class Viessmann(SmartPlugin):
             rawvalue += value
             rawdatabytes = rawdatabytes[1:]
         # Signed/Unsigned berücksichtigen
-        if commandsignage == 'signed' and rawvalue > int(pow(256, i)/2-1):
+        if commandsignage == 'signed' and rawvalue > int(pow(256, i) / 2 - 1):
             rawvalue = (pow(256, i) - rawvalue) * (-1)
         return rawvalue
 
@@ -724,9 +745,9 @@ class Viessmann(SmartPlugin):
         while rawdatabytes:
             hours, minutes = divmod(int(rawdatabytes[:2], 16), 8)
             if minutes >= 6 or hours >= 24:
-                yield "{}".format('00:00') #f"00:00"  # keine gültiger Zeit-Wert
+                yield "{}".format('00:00')  # f"00:00"  # keine gültiger Zeit-Wert
             else:
-                yield "{:02d}:{:02d}".format(hours, minutes*10) #f"{hours:02d}:{minutes*10:02d}"
+                yield "{:02d}:{:02d}".format(hours, minutes * 10)   # f"{hours:02d}:{minutes*10:02d}"
             rawdatabytes = rawdatabytes[2:]
         return None
 
@@ -779,6 +800,13 @@ class Viessmann(SmartPlugin):
 
     def serialnumber_decode(self, serialnummerbytes):
         # serial number = ((((((((((((B0-48)*10)+(B1-48))*10)+(B2-48))*10)+(B3-48))*10)+(B4-48))*10)+(B5-48))*10)+B6-48"/>
+
+# alternativ (schöner? :-) )
+# serial = 0
+# serialnummerbytes.reverse()
+# for byte in range(0, len(serialnummerbytes)):
+#   serial += (serialnummerbytes[byte] - 48) * 10 ** byte
+
         B0 = (serialnummerbytes[0])
         B1 = (serialnummerbytes[1])
         B2 = (serialnummerbytes[2])
@@ -786,7 +814,7 @@ class Viessmann(SmartPlugin):
         B4 = (serialnummerbytes[4])
         B5 = (serialnummerbytes[5])
         B6 = (serialnummerbytes[6])
-        serialnumber = hex(((((((((((((B0-48)*10)+(B1-48))*10)+(B2-48))*10)+(B3-48))*10)+(B4-48))*10)+(B5-48))*10)+B6-48).upper()
+        serialnumber = hex(((((((((((((B0 - 48) * 10) + (B1 - 48)) * 10) + (B2 - 48)) * 10) + (B3 - 48)) * 10) + (B4 - 48)) * 10) + (B5 - 48)) * 10) + B6 - 48).upper()
         return serialnumber
 
     def commandname_by_commandcode(self, commandcode):
@@ -806,12 +834,12 @@ class Viessmann(SmartPlugin):
                 'http')  # try/except to handle running in a core version that does not support modules
         except:
             self.mod_http = None
-        if self.mod_http == None:
+        if self.mod_http is None:
             self.logger.error("Not initializing the web interface")
             return False
 
         import sys
-        if not "SmartPluginWebIf" in list(sys.modules['lib.model.smartplugin'].__dict__):
+        if "SmartPluginWebIf" not in list(sys.modules['lib.model.smartplugin'].__dict__):
             self.logger.warning("Web interface needs SmartHomeNG v1.5 and up. Not initializing the web interface")
             return False
 
@@ -840,9 +868,6 @@ class Viessmann(SmartPlugin):
 # ------------------------------------------
 #    Webinterface of the plugin
 # ------------------------------------------
-
-import cherrypy
-from jinja2 import Environment, FileSystemLoader
 
 
 class WebInterface(SmartPluginWebIf):
@@ -875,7 +900,6 @@ class WebInterface(SmartPluginWebIf):
         tmpl = self.tplenv.get_template('index.html')
         # add values to be passed to the Jinja2 template eg: tmpl.render(p=self.plugin, interface=interface, ...)
         return tmpl.render(p=self.plugin, items=sorted(self.items.return_items(), key=lambda k: str.lower(k['_path'])))
-
 
     @cherrypy.expose
     def get_data_html(self, dataSet=None):
