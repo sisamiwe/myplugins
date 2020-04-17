@@ -226,7 +226,7 @@ commandset = {
 
         # Anlagenstatus
         'Betriebsart':              {'addr': 'B000', 'len': 1, 'unit': 'BA',      'set': True},       # getBetriebsart -- Bedienung HK1 - Heizkreis 1: Betriebsart (Textstring)
-        'WWBereitungEinmal':        {'addr': 'B020', 'len': 1, 'unit': 'RT',      'set': True, 'min_value': 0, 'max_value': 1},       # getWWEinmal / setWWEinmal -- Bedienung WW - Betriebsdaten WW: 1x WW-Bereitung (0..1)
+        'Manuell':                  {'addr': 'B020', 'len': 1, 'unit': 'IUNON',   'set': True, 'min_value': 0, 'max_value': 2},       # getManuell / setManuell -- 0 = normal, 1 = manueller Heizbetrieb, 2 = 1x Warmwasser auf Temp2
         'Sekundaerpumpe':           {'addr': '0484', 'len': 1, 'unit': 'RT',      'set': False},      # getStatusSekP -- Diagnose - Anlagenuebersicht: Sekundaerpumpe 1 (0..1)
         'Heizkreispumpe':           {'addr': '048D', 'len': 1, 'unit': 'RT',      'set': False},      # getStatusPumpe -- Information - Heizkreis HK1: Heizkreispumpe (0..1)
         'Zirkulationspumpe':        {'addr': '0490', 'len': 1, 'unit': 'RT',      'set': False},      # getStatusPumpeZirk -- Information - Warmwasser: Zirkulationspumpe (0..1)
@@ -273,6 +273,9 @@ commandset = {
         'OMT_Temperature':          {'addr': '1A60', 'len': 1, 'unit': 'IUNON',   'set': False},      # getTempOMT -- OMT Temperature
         'LZVerdichterWP':           {'addr': '5005', 'len': 4, 'unit': 'IU3600',  'set': False},      # getLZWP -- Statistik - Betriebsstunden Anlage: Betriebsstunden Waermepumpe  (0..1150000)
         'SollLeistungVerdichter':   {'addr': '5030', 'len': 1, 'unit': 'IUNON',   'set': False},      # getPwrSollVerdichter -- Diagnose - Anlagenuebersicht: Soll-Leistung Verdichter 1 (0..100)
+        'WaermeWW12M':              {'addr': '1660', 'len': 4, 'unit': 'IU10',    'set': False},      # Wärmeenergie für WW-Bereitung der letzten 12 Monate (kWh)
+        'ElektroWW12M':             {'addr': '1670', 'len': 4, 'unit': 'IU10',    'set': False},      # elektr. Energie für WW-Bereitung der letzten 12 Monate (kWh)
+
     },
 }
 
