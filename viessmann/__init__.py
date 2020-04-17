@@ -33,6 +33,7 @@ from . import commands
 from lib.item import Items
 from lib.model.smartplugin import *
 from bin.smarthome import VERSION
+
 if '.'.join(VERSION.split('.', 2)[:2]) <= '1.5':
     self.logger = logging.getLogger(__name__)
 
@@ -214,7 +215,6 @@ class Viessmann(SmartPlugin):
         # Process the update config
         if self.has_iattr(item.conf, 'viess_update'):
             self.log_debug("Item for requesting update found: {}".format(item))
-            ad = self.get_iattr_value(item.conf, 'viess_update')
             return self.update_item
 
         # Process the read config
@@ -283,7 +283,11 @@ class Viessmann(SmartPlugin):
                     commandname = self.get_iattr_value(item.conf, 'viess_send')
                 value = item()
                 self.log_debug('Got item value to be written: {} on command name {}.'.format(value, commandname))
-                self.create_write_command(commandname, value)
+                if not self.create_write_command(commandname, value):
+                    # create_write_command() liefer False, wenn das Schreiben fehlgeschlagen ist
+                    # -> dann auch keine weitere Verarbeitung
+                    self.log_debug("Write for {} with value {} failed, canceling followup actions".format(commandname, value))
+                    return None
 
                 # If a read command should be sent after write
                 if self.has_iattr(item.conf, 'viess_read') and self.has_iattr(item.conf, 'viess_read_afterwrite'):
@@ -366,8 +370,7 @@ class Viessmann(SmartPlugin):
 
     def create_read_command(self, commandname):
         # A read_request telegram looks like this: ACK (1 byte), startbyte (1 byte), data length in bytes (1 byte), request/response (1 byte), read/write (1 byte), addr (2 byte), amount of value bytes expected in answer (1 byte), checksum (1 byte)
-        self.log_info('____________________________________________________________________________________________________________________________________________________________')
-        self.log_info('Got a new read job: Command {}'.format(commandname))
+        self.log_debug('Got a new read job: Command {}'.format(commandname))
 
         # Get command config
         commandconf = self._commandset[commandname]
@@ -392,8 +395,7 @@ class Viessmann(SmartPlugin):
 
     def create_write_command(self, commandname, value=None):
         # A write_request telegram looks like this: ACK (1 byte), startbyte (1 byte), data length in bytes (1 byte), request/response (1 byte), read/write (1 byte), addr (2 byte), amount of bytes to be written (1 byte), value (bytes as per last byte), checksum (1 byte)
-        self.log_info('____________________________________________________________________________________________________________________________________________________________')
-        self.log_info('Got a new write job: Command {} with value {}'.format(commandname, value))
+        self.log_debug('Got a new write job: Command {} with value {}'.format(commandname, value))
 
         # Get command config
         commandconf = self._commandset[commandname]
@@ -408,11 +410,12 @@ class Viessmann(SmartPlugin):
             # this will not work properly if multiple entries have the same value!
             try:
                 value = int(dict(map(reversed, self._operatingmodes.items()))[value])
-                commandunit = 'IFNON'
+                commandunit = 'IUNON'
                 commandsignage = False
             except KeyError:
                 # value doesn't exist in operatingmodes. don't know what to do
-                raise Exception('Value {} not defined in operating modes for device {}'.format(value, self.heating_type))
+                self.log_err('Value {} not defined in operating modes for device {}'.format(value, self.heating_type))
+                return False
 
         set_allowed = bool(commandconf['set'])
         unitconf = self._unitset[commandunit]
@@ -445,7 +448,8 @@ class Viessmann(SmartPlugin):
                                 valuebytes = bytes.fromhex(datestring)
                                 self.log_debug('Created value bytes for type {} as bytes: {}'.format(commandvalueresult, valuebytes))
                             except Exception as e:
-                                raise Exception('Incorrect data format, YYYY-MM-DD expected; Error: {}'.format(e))
+                                self.log_err('Incorrect data format, YYYY-MM-DD expected; Error: {}'.format(e))
+                                return False
                         elif commandvalueresult == 'timer':
                             try:
                                 times = ""
@@ -457,7 +461,8 @@ class Viessmann(SmartPlugin):
                                 valuebytes = bytes.fromhex(times)
                                 self.log_debug('Created value bytes for type {} as hexstring: {} and as bytes: {}'.format(commandvalueresult, self.bytes2hexstring(valuebytes), valuebytes))
                             except Exception as e:
-                                raise Exception('Incorrect data format, (An: hh:mm Aus: hh:mm) expected; Error: {}'.format(e))
+                                self.log_err('Incorrect data format, (An: hh:mm Aus: hh:mm) expected; Error: {}'.format(e))
+                                return False
                         elif commandvalueresult == 'integer' or commandvalueresult == 'list':
                             if commandtransform == 'int':
                                 value = self.value_transform_write(value, commandtransform)
@@ -469,7 +474,8 @@ class Viessmann(SmartPlugin):
                             valuebytes = self.int2bytes(value, commandvaluebytes)
                             self.log_debug('Created value bytes for type {} as hexstring: {} and as bytes: {}'.format(commandvalueresult, self.bytes2hexstring(valuebytes), valuebytes))
                         else:
-                            raise Exception('Type not definied for creating write command bytes')
+                            self.log_err('Type not definied for creating write command bytes')
+                            return False
 
                         # Calculate length of payload (telegram header for write with 5 byte + amount of valuebytes)
                         payloadlength = int(self._commandbyteswrite) + int(commandvaluebytes)
@@ -491,14 +497,20 @@ class Viessmann(SmartPlugin):
                         # hand over built packet to send_command
                         self.send_command(packet, packetlen_response)
                     else:
-                        raise Exception('No valid value to be sent')
+                        self.log_err('No valid value to be sent')
+                        return False
                 else:
-                    raise Exception('No value handed over')
+                    self.log_err('No value handed over')
+                    return False
             else:
-                raise Exception('Command at Heating is not allowed to be sent')
+                self.log_err('Command at Heating is not allowed to be sent')
+                return False
 
         except Exception as e:
             self.log_debug('create_write_command failed with error: {}.'.format(e))
+            return False
+
+        return True
 
     def send_command(self, packet, packetlen_response):
         if not self._connected:
@@ -591,8 +603,6 @@ class Viessmann(SmartPlugin):
             commandvaluebytes = commandconf['len']
             commandunit = commandconf['unit']
             unitconf = self._unitset[commandunit]
-            commandunit_description = unitconf['unit_de']
-            commandvalueresult = unitconf['type']
             commandsignage = unitconf['signed']
             valuetransform = unitconf['read_value_transform']
             self.log_debug('Unit defined to {} with config {}.'.format(commandunit, unitconf))
@@ -646,7 +656,7 @@ class Viessmann(SmartPlugin):
             elif commandunit == 'ES':
                 # erstes Byte = Fehlercode; folgenden 8 Byte = Systemzeit
                 errorcode = (rawdatabytes[:1]).hex()
-                errorquerytime = (rawdatabytes[1:8]).hex()
+                # errorquerytime = (rawdatabytes[1:8]).hex()
                 value = self.error_decode(errorcode)
                 self.log_debug('Matched command {} and read transformed errorcode {} (raw value was {}) and byte length {}.'.format(commandname, value, errorcode, commandvaluebytes))
             elif commandunit == 'SC':
@@ -800,22 +810,21 @@ class Viessmann(SmartPlugin):
 
     def serialnumber_decode(self, serialnummerbytes):
         # serial number = ((((((((((((B0-48)*10)+(B1-48))*10)+(B2-48))*10)+(B3-48))*10)+(B4-48))*10)+(B5-48))*10)+B6-48"/>
+        # B0 = (serialnummerbytes[0])
+        # B1 = (serialnummerbytes[1])
+        # B2 = (serialnummerbytes[2])
+        # B3 = (serialnummerbytes[3])
+        # B4 = (serialnummerbytes[4])
+        # B5 = (serialnummerbytes[5])
+        # B6 = (serialnummerbytes[6])
+        # serialnumber = hex(((((((((((((B0 - 48) * 10) + (B1 - 48)) * 10) + (B2 - 48)) * 10) + (B3 - 48)) * 10) + (B4 - 48)) * 10) + (B5 - 48)) * 10) + B6 - 48).upper()
 
-# alternativ (schöner? :-) )
-# serial = 0
-# serialnummerbytes.reverse()
-# for byte in range(0, len(serialnummerbytes)):
-#   serial += (serialnummerbytes[byte] - 48) * 10 ** byte
+        serialnumber = 0
+        serialnummerbytes.reverse()
+        for byte in range(0, len(serialnummerbytes)):
+          serialnumber += (serialnummerbytes[byte] - 48) * 10 ** byte
 
-        B0 = (serialnummerbytes[0])
-        B1 = (serialnummerbytes[1])
-        B2 = (serialnummerbytes[2])
-        B3 = (serialnummerbytes[3])
-        B4 = (serialnummerbytes[4])
-        B5 = (serialnummerbytes[5])
-        B6 = (serialnummerbytes[6])
-        serialnumber = hex(((((((((((((B0 - 48) * 10) + (B1 - 48)) * 10) + (B2 - 48)) * 10) + (B3 - 48)) * 10) + (B4 - 48)) * 10) + (B5 - 48)) * 10) + B6 - 48).upper()
-        return serialnumber
+        return hex(serialnumber).upper()
 
     def commandname_by_commandcode(self, commandcode):
         for commandname in self._commandset.keys():
@@ -911,9 +920,9 @@ class WebInterface(SmartPluginWebIf):
         :param dataSet: Dataset for which the data should be returned (standard: None)
         :return: dict with the data needed to update the web page.
         """
-        if dataSet is None:
+        if dataSet is not None:
             # get the new data
-            data = {}
+            # data = {}
 
             # data['item'] = {}
             # for i in self.plugin.items:
@@ -924,4 +933,6 @@ class WebInterface(SmartPluginWebIf):
             #     return json.dumps(data)
             # except Exception as e:
             #     self.logger.error("get_data_html exception: {}".format(e))
+            pass
+
         return {}

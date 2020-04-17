@@ -56,26 +56,26 @@ controlset = {
 commandset = {
     'V200KO1B': {
         # Kessel
-        'Aussentemperatur':         {'addr': '0800', 'len': 2, 'unit': 'IF10',    'set': False},    # Aussentemperatur
-        'Aussentemperatur_TP':      {'addr': '5525', 'len': 2, 'unit': 'IF10',    'set': False},    # Aussentemperatur_tiefpass
-        'Aussentemperatur_Dp':      {'addr': '5527', 'len': 2, 'unit': 'IF10',    'set': False},    # Aussentemperatur in Grad C (Gedaempft)
-        'Kesseltemperatur':         {'addr': '0802', 'len': 2, 'unit': 'IF10',    'set': False},    # Kesseltemperatur
-        'Kesseltemperatur_TP':      {'addr': '0810', 'len': 2, 'unit': 'IF10',    'set': False},    # Kesseltemperatur_tiefpass
-        'Kesselsolltemperatur':     {'addr': '555A', 'len': 2, 'unit': 'IF10',    'set': False},    # Kesselsolltemperatur
-        'Temp_Speicher_Ladesensor': {'addr': '0812', 'len': 2, 'unit': 'IF10',    'set': False},    # Temperatur Speicher Ladesensor Komfortsensor
-        'Auslauftemperatur':        {'addr': '0814', 'len': 2, 'unit': 'IF10',    'set': False},    # Auslauftemperatur
-        'Abgastemperatur':          {'addr': '0816', 'len': 2, 'unit': 'IF10',    'set': False},    # Abgastemperatur
-        'Gem_Vorlauftemperatur':    {'addr': '081a', 'len': 2, 'unit': 'IF10',    'set': False},    # Gem. Vorlauftemperatur
-        'Relais_K12':               {'addr': '0842', 'len': 1, 'unit': 'IFBOOL',  'set': False},    # Relais K12 Interne Anschlußerweiterung
-        'Eingang_0-10_V':           {'addr': '0a86', 'len': 1, 'unit': 'IFINT',   'set': False},    # Eingang 0-10 V
-        'EA1_Kontakt_0':            {'addr': '0a90', 'len': 1, 'unit': 'IFBOOL',  'set': False},    # EA1: Kontakt 0
-        'EA1_Kontakt_1':            {'addr': '0a91', 'len': 1, 'unit': 'IFBOOL',  'set': False},    # EA1: Kontakt 1
-        'EA1_Kontakt_2':            {'addr': '0a92', 'len': 1, 'unit': 'IFBOOL',  'set': False},    # EA1: Kontakt 2
-        'EA1_Externer_Soll_0-10V':  {'addr': '0a93', 'len': 1, 'unit': 'IFINT',   'set': False},    # EA1: Externer Sollwert 0-10V
-        'EA1_Relais_0':             {'addr': '0a95', 'len': 1, 'unit': 'IFBOOL',  'set': False},    # EA1: Relais 0
-        'AM1_Ausgang_1':            {'addr': '0aa0', 'len': 1, 'unit': 'IFBOOL',  'set': False},    # AM1 Ausgang 1
-        'AM1_Ausgang_2':            {'addr': '0aa1', 'len': 1, 'unit': 'IFBOOL',  'set': False},    # AM1 Ausgang 2
-        'TempKOffset':              {'addr': '6760', 'len': 1, 'unit': 'ITNON',   'set': True,  'min_value': 0, 'max_value': 1193045 },    # Kesseloffset KT ueber WWsoll in Grad C
+        'Aussentemperatur':         {'addr': '0800', 'len': 2, 'unit': 'IU10',    'set': False},    # Aussentemperatur
+        'Aussentemperatur_TP':      {'addr': '5525', 'len': 2, 'unit': 'IU10',    'set': False},    # Aussentemperatur_tiefpass
+        'Aussentemperatur_Dp':      {'addr': '5527', 'len': 2, 'unit': 'IU10',    'set': False},    # Aussentemperatur in Grad C (Gedaempft)
+        'Kesseltemperatur':         {'addr': '0802', 'len': 2, 'unit': 'IU10',    'set': False},    # Kesseltemperatur
+        'Kesseltemperatur_TP':      {'addr': '0810', 'len': 2, 'unit': 'IU10',    'set': False},    # Kesseltemperatur_tiefpass
+        'Kesselsolltemperatur':     {'addr': '555A', 'len': 2, 'unit': 'IU10',    'set': False},    # Kesselsolltemperatur
+        'Temp_Speicher_Ladesensor': {'addr': '0812', 'len': 2, 'unit': 'IU10',    'set': False},    # Temperatur Speicher Ladesensor Komfortsensor
+        'Auslauftemperatur':        {'addr': '0814', 'len': 2, 'unit': 'IU10',    'set': False},    # Auslauftemperatur
+        'Abgastemperatur':          {'addr': '0816', 'len': 2, 'unit': 'IU10',    'set': False},    # Abgastemperatur
+        'Gem_Vorlauftemperatur':    {'addr': '081a', 'len': 2, 'unit': 'IU10',    'set': False},    # Gem. Vorlauftemperatur
+        'Relais_K12':               {'addr': '0842', 'len': 1, 'unit': 'IUBOOL',  'set': False},    # Relais K12 Interne Anschlußerweiterung
+        'Eingang_0-10_V':           {'addr': '0a86', 'len': 1, 'unit': 'IUINT',   'set': False},    # Eingang 0-10 V
+        'EA1_Kontakt_0':            {'addr': '0a90', 'len': 1, 'unit': 'IUBOOL',  'set': False},    # EA1: Kontakt 0
+        'EA1_Kontakt_1':            {'addr': '0a91', 'len': 1, 'unit': 'IUBOOL',  'set': False},    # EA1: Kontakt 1
+        'EA1_Kontakt_2':            {'addr': '0a92', 'len': 1, 'unit': 'IUBOOL',  'set': False},    # EA1: Kontakt 2
+        'EA1_Externer_Soll_0-10V':  {'addr': '0a93', 'len': 1, 'unit': 'IUINT',   'set': False},    # EA1: Externer Sollwert 0-10V
+        'EA1_Relais_0':             {'addr': '0a95', 'len': 1, 'unit': 'IUBOOL',  'set': False},    # EA1: Relais 0
+        'AM1_Ausgang_1':            {'addr': '0aa0', 'len': 1, 'unit': 'IUBOOL',  'set': False},    # AM1 Ausgang 1
+        'AM1_Ausgang_2':            {'addr': '0aa1', 'len': 1, 'unit': 'IUBOOL',  'set': False},    # AM1 Ausgang 2
+        'TempKOffset':              {'addr': '6760', 'len': 1, 'unit': 'ISNON',   'set': True,  'min_value': 0, 'max_value': 1193045 },    # Kesseloffset KT ueber WWsoll in Grad C
         'Systemtime':               {'addr': '088E', 'len': 8, 'unit': 'TI',      'set': True,  'min_value': 0, 'max_value': 1193045 },    # Systemzeit
         'Anlagenschema':            {'addr': '7700', 'len': 2, 'unit': 'SC',      'set': False},    # Anlagenschema
         'DevType':                  {'addr': '00F8', 'len': 8, 'unit': 'DT',      'set': False},    # Heizungstyp
@@ -94,96 +94,96 @@ commandset = {
         'Error8':                   {'addr': '754F', 'len': 9, 'unit': 'ES', 'set': False},    # Fehlerhistory Eintrag 9
         'Error9':                   {'addr': '7558', 'len': 9, 'unit': 'ES', 'set': False},    # Fehlerhistory Eintrag 10
         # Pumpen
-        'Speicherladepumpe':        {'addr': '6513', 'len': 1, 'unit': 'IFBOOL', 'set': False},    # Speicherladepumpe
-        'Zirkulationspumpe':        {'addr': '6515', 'len': 1, 'unit': 'IFBOOL', 'set': False},    # Zirkulationspumpe
-        'Interne_Pumpe':            {'addr': '7660', 'len': 1, 'unit': 'IFBOOL', 'set': False},    # Interne Pumpe
-        'Heizkreispumpe_A1M1':      {'addr': '2906', 'len': 1, 'unit': 'IFBOOL', 'set': False},    # Heizkreispumpe A1
-        'Heizkreispumpe_A1M1_RPM':  {'addr': '7663', 'len': 1, 'unit': 'IFNON',  'set': False},    # Heizkreispumpe A1M1 Drehzahl
-        'Heizkreispumpe_M2':        {'addr': '3906', 'len': 1, 'unit': 'IFINT',  'set': False},    # Heizkreispumpe M2
-        'Heizkreispumpe_M2_RPM':    {'addr': '7665', 'len': 1, 'unit': 'IFNON',  'set': False},    # Heizkreispumpe M2 Drehzahl
-        'Relais_Status_Pumpe_A1M1': {'addr': 'a152', 'len': 1, 'unit': 'IFBOOL', 'set': False},    # Relais-Status Heizkreispumpe 1
+        'Speicherladepumpe':        {'addr': '6513', 'len': 1, 'unit': 'IUBOOL', 'set': False},    # Speicherladepumpe
+        'Zirkulationspumpe':        {'addr': '6515', 'len': 1, 'unit': 'IUBOOL', 'set': False},    # Zirkulationspumpe
+        'Interne_Pumpe':            {'addr': '7660', 'len': 1, 'unit': 'IUBOOL', 'set': False},    # Interne Pumpe
+        'Heizkreispumpe_A1M1':      {'addr': '2906', 'len': 1, 'unit': 'IUBOOL', 'set': False},    # Heizkreispumpe A1
+        'Heizkreispumpe_A1M1_RPM':  {'addr': '7663', 'len': 1, 'unit': 'IUNON',  'set': False},    # Heizkreispumpe A1M1 Drehzahl
+        'Heizkreispumpe_M2':        {'addr': '3906', 'len': 1, 'unit': 'IUINT',  'set': False},    # Heizkreispumpe M2
+        'Heizkreispumpe_M2_RPM':    {'addr': '7665', 'len': 1, 'unit': 'IUNON',  'set': False},    # Heizkreispumpe M2 Drehzahl
+        'Relais_Status_Pumpe_A1M1': {'addr': 'a152', 'len': 1, 'unit': 'IUBOOL', 'set': False},    # Relais-Status Heizkreispumpe 1
         # Brenner
-        'Brennerstarts':                {'addr': '088a', 'len': 4, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 1193045 },    # Brennerstarts
-        'Brenner_Betriebsstunden':      {'addr': '08a7', 'len': 4, 'unit': 'IF3600', 'set': True,  'min_value': 0, 'max_value': 1193045 },    # Brenner-Betriebsstunden
-        'Brennerstatus_1':              {'addr': '0842', 'len': 1, 'unit': 'IFBOOL', 'set': False},    # Brennerstatus Stufe1
-        'Brennerstatus_2':              {'addr': '0849', 'len': 1, 'unit': 'IFBOOL', 'set': False},    # Brennerstatus Stufe2
-        'Oeldurchsatz':                 {'addr': '5726', 'len': 4, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 1193045  },    # Oeldurchsatz Brenner in Dezi-Liter pro Stunde
-        'Oelverbrauch':                 {'addr': '7574', 'len': 4, 'unit': 'IT1000', 'set': True},    # Oelverbrauch kumuliert
+        'Brennerstarts':                {'addr': '088a', 'len': 4, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 1193045 },    # Brennerstarts
+        'Brenner_Betriebsstunden':      {'addr': '08a7', 'len': 4, 'unit': 'IU3600', 'set': True,  'min_value': 0, 'max_value': 1193045 },    # Brenner-Betriebsstunden
+        'Brennerstatus_1':              {'addr': '0842', 'len': 1, 'unit': 'IUBOOL', 'set': False},    # Brennerstatus Stufe1
+        'Brennerstatus_2':              {'addr': '0849', 'len': 1, 'unit': 'IUBOOL', 'set': False},    # Brennerstatus Stufe2
+        'Oeldurchsatz':                 {'addr': '5726', 'len': 4, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 1193045  },    # Oeldurchsatz Brenner in Dezi-Liter pro Stunde
+        'Oelverbrauch':                 {'addr': '7574', 'len': 4, 'unit': 'IS1000', 'set': True},    # Oelverbrauch kumuliert
         # Heizkreis A1M1
-        'Raumtemperatur_A1M1':                        {'addr': '0896', 'len': 1, 'unit': 'ITNON',  'set': False},    # Raumtemperatur A1M1
-        'Raumtemperatur_Soll_Normalbetrieb_A1M1':     {'addr': '2306', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Normalbetrieb A1M1
-        'Raumtemperatur_Soll_Red_Betrieb_A1M1':       {'addr': '2307', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Reduzierter Betrieb A1M1
-        'Raumtemperatur_Soll_Party_Betrieb_A1M1':     {'addr': '2308', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Party Betrieb A1M1
+        'Raumtemperatur_A1M1':                        {'addr': '0896', 'len': 1, 'unit': 'ISNON',  'set': False},    # Raumtemperatur A1M1
+        'Raumtemperatur_Soll_Normalbetrieb_A1M1':     {'addr': '2306', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Normalbetrieb A1M1
+        'Raumtemperatur_Soll_Red_Betrieb_A1M1':       {'addr': '2307', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Reduzierter Betrieb A1M1
+        'Raumtemperatur_Soll_Party_Betrieb_A1M1':     {'addr': '2308', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Party Betrieb A1M1
         'Aktuelle_Betriebsart_A1M1':                  {'addr': '2301', 'len': 1, 'unit': 'BA',     'set': False},    # Aktuelle Betriebsart A1M1
-        'Betriebsart_A1M1':                           {'addr': '2323', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 4 },    # Betriebsart A1M1
-        'Sparbetrieb_A1M1':                           {'addr': '2302', 'len': 1, 'unit': 'IFBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Sparbetrieb A1M1
-        'Zustand_Sparbetrieb_A1M1':                   {'addr': '2331', 'len': 1, 'unit': 'IFINT',  'set': False},    # Zustand Sparbetrieb A1M1
-        'Partybetrieb_A1M1':                          {'addr': '2303', 'len': 1, 'unit': 'IFBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Partybetrieb A1M1
-        'Zustand_Partybetrieb_A1M1':                  {'addr': '2330', 'len': 1, 'unit': 'IFINT',  'set': False},    # Zustand Partybetrieb A1M1
-        'Vorlauftemperatur_A1M1':                     {'addr': '2900', 'len': 2, 'unit': 'IF10',   'set': False},    # Vorlauftemperatur A1M1
-        'Vorlauftemperatur_Soll_A1M1':                {'addr': '2544', 'len': 2, 'unit': 'IF10',   'set': False},    # Vorlauftemperatur Soll A1M1
-        'StatusFrost_A1M1':                           {'addr': '2500', 'len': 1, 'unit': 'IFBOOL', 'set': False},    # Status Frostwarnung A1M1
-        'Externe_Raumsolltemperatur_Normal_A1M1':     {'addr': '2321', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 37 },    # Externe Raumsolltemperatur Normal A1M1
-        'Externe_Betriebsartenumschaltung_A1M1':      {'addr': '2549', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 4 },    # Externe Betriebsartenumschaltung A1M1
-        'Speichervorrang_A1M1':                       {'addr': '27A2', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 15 },    # Speichervorrang auf Heizkreispumpe und Mischer
-        'Frostschutzgrenze_A1M1':                     {'addr': '27A3', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': -9, 'max_value': 15 },    # Frostschutzgrenze
-        'Frostschutz_A1M1':                           {'addr': '27A4', 'len': 1, 'unit': 'IFBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Frostschutzgrenze
-        'Heizkreispumpenlogik_A1M1':                  {'addr': '27A5', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 15 },    # HeizkreispumpenlogikFunktion
-        'Sparschaltung_A1M1':                         {'addr': '27A6', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 5, 'max_value': 35 },    # AbsolutSommersparschaltung
-        'Mischersparfunktion_A1M1':                   {'addr': '27A7', 'len': 1, 'unit': 'IFBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Mischersparfunktion
-        'Pumpenstillstandzeit_A1M1':                  {'addr': '27A9', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 15 },    # Pumpenstillstandzeit
-        'Vorlauftemperatur_min_A1M1':                 {'addr': '27C5', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 1, 'max_value': 127 },    # Minimalbegrenzung der Vorlauftemperatur
-        'Vorlauftemperatur_max_A1M1':                 {'addr': '27C6', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 10, 'max_value': 127 },    # Maximalbegrenzung der Vorlauftemperatur
-        'Neigung_Heizkennlinie_A1M1':                 {'addr': '27D3', 'len': 1, 'unit': 'IF10',   'set': True,  'min_value': 0.2, 'max_value': 3.5 },    # Neigung Heizkennlinie A1M1
-        'Niveau_Heizkennlinie_A1M1':                  {'addr': '27D4', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': -13, 'max_value': 40 },    # Niveau Heizkennlinie A1M1
-        'Partybetrieb_Zeitbegrenzung_A1M1':           {'addr': '27F2', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 12 },    # Zeitliche Begrenzung für Partybetrieb oder externe BetriebsprogrammUmschaltung mit Taster
-        'Temperaturgrenze_red_Betrieb_A1M1':          {'addr': '27F8', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': -61, 'max_value': 10 },    # Temperaturgrenze für Aufhebung des reduzierten Betriebs -5 ºC
-        'Temperaturgrenze_red_Raumtemp_A1M1':         {'addr': '27F9', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': -60, 'max_value': 10 },    # Temperaturgrenze für Anhebung des reduzierten RaumtemperaturSollwertes
-        'Vorlauftemperatur_Erhoehung_Soll_A1M1':      {'addr': '27FA', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 50 },    # Erhöhung des Kesselwasser- bzw. Vorlauftemperatur-Sollwertes beim Übergang von Betrieb mit reduzierter Raumtemperatur in den Betrieb mit normaler Raumtemperatur um 20 %
-        'Vorlauftemperatur_Erhoehung_Zeit_A1M1':      {'addr': '27FA', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 150 },    # Zeitdauer für die Erhöhung des Kesselwasser bzw.VorlauftemperaturSollwertes (siehe Codieradresse „FA“) 60 min.
+        'Betriebsart_A1M1':                           {'addr': '2323', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 4 },    # Betriebsart A1M1
+        'Sparbetrieb_A1M1':                           {'addr': '2302', 'len': 1, 'unit': 'IUBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Sparbetrieb A1M1
+        'Zustand_Sparbetrieb_A1M1':                   {'addr': '2331', 'len': 1, 'unit': 'IUINT',  'set': False},    # Zustand Sparbetrieb A1M1
+        'Partybetrieb_A1M1':                          {'addr': '2303', 'len': 1, 'unit': 'IUBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Partybetrieb A1M1
+        'Zustand_Partybetrieb_A1M1':                  {'addr': '2330', 'len': 1, 'unit': 'IUINT',  'set': False},    # Zustand Partybetrieb A1M1
+        'Vorlauftemperatur_A1M1':                     {'addr': '2900', 'len': 2, 'unit': 'IU10',   'set': False},    # Vorlauftemperatur A1M1
+        'Vorlauftemperatur_Soll_A1M1':                {'addr': '2544', 'len': 2, 'unit': 'IU10',   'set': False},    # Vorlauftemperatur Soll A1M1
+        'StatusFrost_A1M1':                           {'addr': '2500', 'len': 1, 'unit': 'IUBOOL', 'set': False},    # Status Frostwarnung A1M1
+        'Externe_Raumsolltemperatur_Normal_A1M1':     {'addr': '2321', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 37 },    # Externe Raumsolltemperatur Normal A1M1
+        'Externe_Betriebsartenumschaltung_A1M1':      {'addr': '2549', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 4 },    # Externe Betriebsartenumschaltung A1M1
+        'Speichervorrang_A1M1':                       {'addr': '27A2', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 15 },    # Speichervorrang auf Heizkreispumpe und Mischer
+        'Frostschutzgrenze_A1M1':                     {'addr': '27A3', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': -9, 'max_value': 15 },    # Frostschutzgrenze
+        'Frostschutz_A1M1':                           {'addr': '27A4', 'len': 1, 'unit': 'IUBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Frostschutzgrenze
+        'Heizkreispumpenlogik_A1M1':                  {'addr': '27A5', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 15 },    # HeizkreispumpenlogikFunktion
+        'Sparschaltung_A1M1':                         {'addr': '27A6', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 5, 'max_value': 35 },    # AbsolutSommersparschaltung
+        'Mischersparfunktion_A1M1':                   {'addr': '27A7', 'len': 1, 'unit': 'IUBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Mischersparfunktion
+        'Pumpenstillstandzeit_A1M1':                  {'addr': '27A9', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 15 },    # Pumpenstillstandzeit
+        'Vorlauftemperatur_min_A1M1':                 {'addr': '27C5', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 1, 'max_value': 127 },    # Minimalbegrenzung der Vorlauftemperatur
+        'Vorlauftemperatur_max_A1M1':                 {'addr': '27C6', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 10, 'max_value': 127 },    # Maximalbegrenzung der Vorlauftemperatur
+        'Neigung_Heizkennlinie_A1M1':                 {'addr': '27D3', 'len': 1, 'unit': 'IU10',   'set': True,  'min_value': 0.2, 'max_value': 3.5 },    # Neigung Heizkennlinie A1M1
+        'Niveau_Heizkennlinie_A1M1':                  {'addr': '27D4', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': -13, 'max_value': 40 },    # Niveau Heizkennlinie A1M1
+        'Partybetrieb_Zeitbegrenzung_A1M1':           {'addr': '27F2', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 12 },    # Zeitliche Begrenzung für Partybetrieb oder externe BetriebsprogrammUmschaltung mit Taster
+        'Temperaturgrenze_red_Betrieb_A1M1':          {'addr': '27F8', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': -61, 'max_value': 10 },    # Temperaturgrenze für Aufhebung des reduzierten Betriebs -5 ºC
+        'Temperaturgrenze_red_Raumtemp_A1M1':         {'addr': '27F9', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': -60, 'max_value': 10 },    # Temperaturgrenze für Anhebung des reduzierten RaumtemperaturSollwertes
+        'Vorlauftemperatur_Erhoehung_Soll_A1M1':      {'addr': '27FA', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 50 },    # Erhöhung des Kesselwasser- bzw. Vorlauftemperatur-Sollwertes beim Übergang von Betrieb mit reduzierter Raumtemperatur in den Betrieb mit normaler Raumtemperatur um 20 %
+        'Vorlauftemperatur_Erhoehung_Zeit_A1M1':      {'addr': '27FA', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 150 },    # Zeitdauer für die Erhöhung des Kesselwasser bzw.VorlauftemperaturSollwertes (siehe Codieradresse „FA“) 60 min.
         # Heizkreis M2
-        'Raumtemperatur_M2':                          {'addr': '0898', 'len': 1, 'unit': 'ITNON',  'set': False},    # Raumtemperatur
-        'Raumtemperatur_Soll_Normalbetrieb_M2':       {'addr': '3306', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Normalbetrieb
-        'Raumtemperatur_Soll_Red_Betrieb_M2':         {'addr': '3307', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Reduzierter Betrieb
-        'Raumtemperatur_Soll_Party_Betrieb_M2':       {'addr': '3308', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Party Betrieb
+        'Raumtemperatur_M2':                          {'addr': '0898', 'len': 1, 'unit': 'ISNON',  'set': False},    # Raumtemperatur
+        'Raumtemperatur_Soll_Normalbetrieb_M2':       {'addr': '3306', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Normalbetrieb
+        'Raumtemperatur_Soll_Red_Betrieb_M2':         {'addr': '3307', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Reduzierter Betrieb
+        'Raumtemperatur_Soll_Party_Betrieb_M2':       {'addr': '3308', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 3, 'max_value': 37 },    # Raumtemperatur Soll Party Betrieb
         'Aktuelle_Betriebsart_M2':                    {'addr': '3301', 'len': 1, 'unit': 'BA',     'set': False},    # Aktuelle Betriebsart
-        'Betriebsart_M2':                             {'addr': '3323', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 4 },    # Betriebsart
-        'Sparbetrieb_M2':                             {'addr': '3302', 'len': 1, 'unit': 'IFBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Sparbetrieb
-        'Zustand_Sparbetrieb_M2':                     {'addr': '3331', 'len': 1, 'unit': 'IFINT',  'set': False},    # Zustand Sparbetrieb
-        'Partybetrieb_M2':                            {'addr': '3303', 'len': 1, 'unit': 'IFBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Partybetrieb
-        'Zustand_Partybetrieb_M2':                    {'addr': '3330', 'len': 1, 'unit': 'IFINT',  'set': False},    # Zustand Partybetrieb
-        'Vorlauftemperatur_M2':                       {'addr': '3900', 'len': 2, 'unit': 'IF10',   'set': False},    # Vorlauftemperatur
-        'Vorlauftemperatur_Soll_M2':                  {'addr': '3544', 'len': 2, 'unit': 'IF10',   'set': False},    # Vorlauftemperatur Soll
-        'StatusFrost_M2':                             {'addr': '3500', 'len': 1, 'unit': 'IFBOOL', 'set': False},    # Status Frostwarnung
-        'Externe_Raumsolltemperatur_Normal_M2':       {'addr': '3321', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 37 },    # Externe Raumsolltemperatur Normal
-        'Externe_Betriebsartenumschaltung_M2':        {'addr': '3549', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 4 },    # Externe Betriebsartenumschaltung
-        'Speichervorrang_M2':                         {'addr': '37A2', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 15 },    # Speichervorrang auf Heizkreispumpe und Mischer
-        'Frostschutzgrenze_M2':                       {'addr': '37A3', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': -9, 'max_value': 15 },    # Frostschutzgrenze
-        'Frostschutz_M2':                             {'addr': '37A4', 'len': 1, 'unit': 'IFBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Frostschutzgrenze
-        'Heizkreispumpenlogik_M2':                    {'addr': '37A5', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 15 },    # HeizkreispumpenlogikFunktion
-        'Sparschaltung_M2':                           {'addr': '37A6', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 5, 'max_value': 35 },    # AbsolutSommersparschaltung
-        'Mischersparfunktion_M2':                     {'addr': '37A7', 'len': 1, 'unit': 'IFBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Mischersparfunktion
-        'Pumpenstillstandzeit_M2':                    {'addr': '37A9', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 15 },    # Pumpenstillstandzeit
-        'Vorlauftemperatur_min_M2':                   {'addr': '37C5', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 1, 'max_value': 127 },    # Minimalbegrenzung der Vorlauftemperatur
-        'Vorlauftemperatur_max_M2':                   {'addr': '37C6', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 10, 'max_value': 127 },    # Maximalbegrenzung der Vorlauftemperatur
-        'Neigung_Heizkennlinie_M2':                   {'addr': '37D3', 'len': 1, 'unit': 'IF10',   'set': True,  'min_value': 0.2, 'max_value': 3.5 },    # Neigung Heizkennlinie
-        'Niveau_Heizkennlinie_M2':                    {'addr': '37D4', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': -13, 'max_value': 40 },    # Niveau Heizkennlinie
-        'Partybetrieb_Zeitbegrenzung_M2':             {'addr': '37F2', 'len': 1, 'unit': 'IFINT',  'set': True,  'min_value': 0, 'max_value': 12 },    # Zeitliche Begrenzung für Partybetrieb oder externe BetriebsprogrammUmschaltung mit Taster
-        'Temperaturgrenze_red_Betrieb_M2':            {'addr': '37F8', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': -61, 'max_value': 10 },    # Temperaturgrenze für Aufhebung des reduzierten Betriebs -5 ºC
-        'Temperaturgrenze_red_Raumtemp_M2':           {'addr': '37F9', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': -60, 'max_value': 10 },    # Temperaturgrenze für Anhebung des reduzierten RaumtemperaturSollwertes
-        'Vorlauftemperatur_Erhoehung_Soll_M2':        {'addr': '37FA', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 50 },    # Erhöhung des Kesselwasser- bzw. Vorlauftemperatur-Sollwertes beim Übergang von Betrieb mit reduzierter Raumtemperatur in den Betrieb mit normaler Raumtemperatur um 20 %
-        'Vorlauftemperatur_Erhoehung_Zeit_M2':        {'addr': '37Fb', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 0, 'max_value': 150 },    # Zeitdauer für die Erhöhung des Kesselwasser bzw.VorlauftemperaturSollwertes (siehe Codieradresse „FA“) 60 min.
+        'Betriebsart_M2':                             {'addr': '3323', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 4 },    # Betriebsart
+        'Sparbetrieb_M2':                             {'addr': '3302', 'len': 1, 'unit': 'IUBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Sparbetrieb
+        'Zustand_Sparbetrieb_M2':                     {'addr': '3331', 'len': 1, 'unit': 'IUINT',  'set': False},    # Zustand Sparbetrieb
+        'Partybetrieb_M2':                            {'addr': '3303', 'len': 1, 'unit': 'IUBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Partybetrieb
+        'Zustand_Partybetrieb_M2':                    {'addr': '3330', 'len': 1, 'unit': 'IUINT',  'set': False},    # Zustand Partybetrieb
+        'Vorlauftemperatur_M2':                       {'addr': '3900', 'len': 2, 'unit': 'IU10',   'set': False},    # Vorlauftemperatur
+        'Vorlauftemperatur_Soll_M2':                  {'addr': '3544', 'len': 2, 'unit': 'IU10',   'set': False},    # Vorlauftemperatur Soll
+        'StatusFrost_M2':                             {'addr': '3500', 'len': 1, 'unit': 'IUBOOL', 'set': False},    # Status Frostwarnung
+        'Externe_Raumsolltemperatur_Normal_M2':       {'addr': '3321', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 37 },    # Externe Raumsolltemperatur Normal
+        'Externe_Betriebsartenumschaltung_M2':        {'addr': '3549', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 4 },    # Externe Betriebsartenumschaltung
+        'Speichervorrang_M2':                         {'addr': '37A2', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 15 },    # Speichervorrang auf Heizkreispumpe und Mischer
+        'Frostschutzgrenze_M2':                       {'addr': '37A3', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': -9, 'max_value': 15 },    # Frostschutzgrenze
+        'Frostschutz_M2':                             {'addr': '37A4', 'len': 1, 'unit': 'IUBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Frostschutzgrenze
+        'Heizkreispumpenlogik_M2':                    {'addr': '37A5', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 15 },    # HeizkreispumpenlogikFunktion
+        'Sparschaltung_M2':                           {'addr': '37A6', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 5, 'max_value': 35 },    # AbsolutSommersparschaltung
+        'Mischersparfunktion_M2':                     {'addr': '37A7', 'len': 1, 'unit': 'IUBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Mischersparfunktion
+        'Pumpenstillstandzeit_M2':                    {'addr': '37A9', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 15 },    # Pumpenstillstandzeit
+        'Vorlauftemperatur_min_M2':                   {'addr': '37C5', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 1, 'max_value': 127 },    # Minimalbegrenzung der Vorlauftemperatur
+        'Vorlauftemperatur_max_M2':                   {'addr': '37C6', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 10, 'max_value': 127 },    # Maximalbegrenzung der Vorlauftemperatur
+        'Neigung_Heizkennlinie_M2':                   {'addr': '37D3', 'len': 1, 'unit': 'IU10',   'set': True,  'min_value': 0.2, 'max_value': 3.5 },    # Neigung Heizkennlinie
+        'Niveau_Heizkennlinie_M2':                    {'addr': '37D4', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': -13, 'max_value': 40 },    # Niveau Heizkennlinie
+        'Partybetrieb_Zeitbegrenzung_M2':             {'addr': '37F2', 'len': 1, 'unit': 'IUINT',  'set': True,  'min_value': 0, 'max_value': 12 },    # Zeitliche Begrenzung für Partybetrieb oder externe BetriebsprogrammUmschaltung mit Taster
+        'Temperaturgrenze_red_Betrieb_M2':            {'addr': '37F8', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': -61, 'max_value': 10 },    # Temperaturgrenze für Aufhebung des reduzierten Betriebs -5 ºC
+        'Temperaturgrenze_red_Raumtemp_M2':           {'addr': '37F9', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': -60, 'max_value': 10 },    # Temperaturgrenze für Anhebung des reduzierten RaumtemperaturSollwertes
+        'Vorlauftemperatur_Erhoehung_Soll_M2':        {'addr': '37FA', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 50 },    # Erhöhung des Kesselwasser- bzw. Vorlauftemperatur-Sollwertes beim Übergang von Betrieb mit reduzierter Raumtemperatur in den Betrieb mit normaler Raumtemperatur um 20 %
+        'Vorlauftemperatur_Erhoehung_Zeit_M2':        {'addr': '37Fb', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 0, 'max_value': 150 },    # Zeitdauer für die Erhöhung des Kesselwasser bzw.VorlauftemperaturSollwertes (siehe Codieradresse „FA“) 60 min.
          # Warmwasser
-        'Warmwasser_Temperatur':     {'addr': '0804', 'len': 2, 'unit': 'IF10',   'set': False},    # Warmwassertemperatur in Grad C
-        'Warmwasser_Solltemperatur': {'addr': '6300', 'len': 1, 'unit': 'ITNON',  'set': True,  'min_value': 10, 'max_value': 95 },    # Warmwasser-Solltemperatur
-        'Satus_Warmwasserbereitung': {'addr': '650a', 'len': 1, 'unit': 'IFBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Satus Warmwasserbereitung
-        'WarmwasserPumpenNachlauf':  {'addr': '6762', 'len': 2, 'unit': 'ITNON' , 'set': True,  'min_value': 0, 'max_value': 1},    # Warmwasserpumpennachlauf
+        'Warmwasser_Temperatur':     {'addr': '0804', 'len': 2, 'unit': 'IU10',   'set': False},    # Warmwassertemperatur in Grad C
+        'Warmwasser_Solltemperatur': {'addr': '6300', 'len': 1, 'unit': 'ISNON',  'set': True,  'min_value': 10, 'max_value': 95 },    # Warmwasser-Solltemperatur
+        'Satus_Warmwasserbereitung': {'addr': '650a', 'len': 1, 'unit': 'IUBOOL', 'set': True,  'min_value': 0, 'max_value': 1 },    # Satus Warmwasserbereitung
+        'WarmwasserPumpenNachlauf':  {'addr': '6762', 'len': 2, 'unit': 'ISNON' , 'set': True,  'min_value': 0, 'max_value': 1},    # Warmwasserpumpennachlauf
         # Ferienprogramm HK_A1M1
-        'Ferienprogramm_A1M1':       {'addr': '2535', 'len': 1, 'unit': 'IFINT',   'set': False},    # Ferienprogramm A1M1
+        'Ferienprogramm_A1M1':       {'addr': '2535', 'len': 1, 'unit': 'IUINT',   'set': False},    # Ferienprogramm A1M1
         'Ferien_Abreisetag_A1M1':    {'addr': '2309', 'len': 8, 'unit': 'DA',      'set': True},    # Ferien Abreisetag A1M1
         'Ferien_Rückreisetag_A1M1':  {'addr': '2311', 'len': 8, 'unit': 'DA',      'set': True},    # Ferien Rückreisetag A1M1
         # Ferienprogramm HK_M2
-        'Ferienprogramm_M2':         {'addr': '3535', 'len': 1, 'unit': 'IFINT',   'set': False},    # Ferienprogramm M2
+        'Ferienprogramm_M2':         {'addr': '3535', 'len': 1, 'unit': 'IUINT',   'set': False},    # Ferienprogramm M2
         'Ferien_Abreisetag_M2':      {'addr': '3309', 'len': 8, 'unit': 'DA',      'set': True},    # Ferien Abreisetag M2
         'Ferien_Rückreisetag_M2':    {'addr': '3311', 'len': 8, 'unit': 'DA',      'set': True},    # Ferien Rückreisetag M2
         # Schaltzeiten Warmwasser
@@ -222,84 +222,84 @@ commandset = {
     'V200WO1C': {
         # generelle Infos
         'Anlagentyp':               {'addr': '00F8', 'len': 2, 'unit': 'DT',      'set': False},      # getAnlTyp -- Information - Allgemein: Anlagentyp (204D)
-        'Aussentemperatur':         {'addr': '0101', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempA -- Information - Allgemein: Aussentemperatur (-40..70)
+        'Aussentemperatur':         {'addr': '0101', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempA -- Information - Allgemein: Aussentemperatur (-40..70)
 
         # Anlagenstatus
         'Betriebsart':              {'addr': 'B000', 'len': 1, 'unit': 'BA',      'set': True},       # getBetriebsart -- Bedienung HK1 - Heizkreis 1: Betriebsart (Textstring)
-        #'BetriebsartNum':           {'addr': 'B000', 'len': 1, 'unit': 'IFNON',   'set': True, 'min_value': 0, 'max_value': 7},       # getBetriebsart / setBetriebsart -- Bedienung HK1 - Heizkreis 1: Betriebsart (0..4)
         'WWBereitungEinmal':        {'addr': 'B020', 'len': 1, 'unit': 'RT',      'set': True, 'min_value': 0, 'max_value': 1},       # getWWEinmal / setWWEinmal -- Bedienung WW - Betriebsdaten WW: 1x WW-Bereitung (0..1)
         'Sekundaerpumpe':           {'addr': '0484', 'len': 1, 'unit': 'RT',      'set': False},      # getStatusSekP -- Diagnose - Anlagenuebersicht: Sekundaerpumpe 1 (0..1)
         'Heizkreispumpe':           {'addr': '048D', 'len': 1, 'unit': 'RT',      'set': False},      # getStatusPumpe -- Information - Heizkreis HK1: Heizkreispumpe (0..1)
         'Zirkulationspumpe':        {'addr': '0490', 'len': 1, 'unit': 'RT',      'set': False},      # getStatusPumpeZirk -- Information - Warmwasser: Zirkulationspumpe (0..1)
         'VentilHeizenWW':           {'addr': '0494', 'len': 1, 'unit': 'RT',      'set': False},      # getStatusVentilWW -- Diagnose - Waermepumpe: 3-W-Ventil Heizen WW1 (0 (Heizen)..1 (WW))
-        'Vorlaufsolltemp':          {'addr': '1800', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempVLSoll -- Diagnose - Heizkreis HK1: Vorlaufsolltemperatur HK1 (0..95)
-        'Outdoor_Fanspeed':         {'addr': '1A52', 'len': 1, 'unit': 'IFNON',   'set': False},      # getSpdFanOut -- Outdoor Fanspeed
-        'Status_Fanspeed':          {'addr': '1A53', 'len': 1, 'unit': 'IFNON',   'set': False},      # getSpdFan -- Geschwindigkeit Luefter
-        'Kompressor_Freq':          {'addr': '1A54', 'len': 1, 'unit': 'IFNON',   'set': False},      # getSpdKomp -- Compressor Frequency
+        'Vorlaufsolltemp':          {'addr': '1800', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempVLSoll -- Diagnose - Heizkreis HK1: Vorlaufsolltemperatur HK1 (0..95)
+        'Outdoor_Fanspeed':         {'addr': '1A52', 'len': 1, 'unit': 'IUNON',   'set': False},      # getSpdFanOut -- Outdoor Fanspeed
+        'Status_Fanspeed':          {'addr': '1A53', 'len': 1, 'unit': 'IUNON',   'set': False},      # getSpdFan -- Geschwindigkeit Luefter
+        'Kompressor_Freq':          {'addr': '1A54', 'len': 1, 'unit': 'IUNON',   'set': False},      # getSpdKomp -- Compressor Frequency
 
         # Temperaturen
-        'SolltempWarmwasser':       {'addr': '6000', 'len': 2, 'unit': 'IT10',    'set': True, 'min_value': 10, 'max_value': 60},      # getTempWWSoll -- Bedienung WW - Betriebsdaten WW: Warmwassersolltemperatur (10..60 (95))
-        'VorlauftempSek':           {'addr': '0105', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempSekVL -- Information - Heizkreis HK1: Vorlauftemperatur Sekundaer 1 (0..95)
-        'RuecklauftempSek':         {'addr': '0106', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempSekRL -- Diagnose - Anlagenuebersicht: Ruecklauftemperatur Sekundaer 1 (0..95)
-        'Warmwassertemperatur':     {'addr': '010d', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempWWIstOben -- Information - Warmwasser: Warmwassertemperatur oben (0..95)
+        'SolltempWarmwasser':       {'addr': '6000', 'len': 2, 'unit': 'IS10',    'set': True, 'min_value': 10, 'max_value': 60},      # getTempWWSoll -- Bedienung WW - Betriebsdaten WW: Warmwassersolltemperatur (10..60 (95))
+        'VorlauftempSek':           {'addr': '0105', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempSekVL -- Information - Heizkreis HK1: Vorlauftemperatur Sekundaer 1 (0..95)
+        'RuecklauftempSek':         {'addr': '0106', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempSekRL -- Diagnose - Anlagenuebersicht: Ruecklauftemperatur Sekundaer 1 (0..95)
+        'Warmwassertemperatur':     {'addr': '010d', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempWWIstOben -- Information - Warmwasser: Warmwassertemperatur oben (0..95)
 
         # Stellwerte
-        'Raumsolltemp':             {'addr': '2000', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempRaumSollNormal -- Bedienung HK1 - Heizkreis 1: Raumsolltemperatur normal (10..30)
-        'RaumsolltempReduziert':    {'addr': '2001', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempRaumSollRed -- Bedienung HK1 - Heizkreis 1: Raumsolltemperatur reduzierter Betrieb (10..30)
-        'HeizkennlinieNiveau':      {'addr': '2006', 'len': 2, 'unit': 'UN',      'set': False},      # getHKLNiveau -- Bedienung HK1 - Heizkreis 1: Niveau der Heizkennlinie (-15..40)
-        'HeizkennlinieNeigung':     {'addr': '2007', 'len': 2, 'unit': 'UN',      'set': False},      # getHKLNeigung -- Bedienung HK1 - Heizkreis 1: Neigung der Heizkennlinie (0..35)
-        'RaumsolltempParty':        {'addr': '2022', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempRaumSollParty -- Bedienung HK1 - Heizkreis 1: Party Solltemperatur (10..30)
+        'Raumsolltemp':             {'addr': '2000', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempRaumSollNormal -- Bedienung HK1 - Heizkreis 1: Raumsolltemperatur normal (10..30)
+        'RaumsolltempReduziert':    {'addr': '2001', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempRaumSollRed -- Bedienung HK1 - Heizkreis 1: Raumsolltemperatur reduzierter Betrieb (10..30)
+        'HeizkennlinieNiveau':      {'addr': '2006', 'len': 2, 'unit': 'IS10',    'set': False},      # getHKLNiveau -- Bedienung HK1 - Heizkreis 1: Niveau der Heizkennlinie (-15..40)
+        'HeizkennlinieNeigung':     {'addr': '2007', 'len': 2, 'unit': 'IS10',    'set': False},      # getHKLNeigung -- Bedienung HK1 - Heizkreis 1: Neigung der Heizkennlinie (0..35)
+        'RaumsolltempParty':        {'addr': '2022', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempRaumSollParty -- Bedienung HK1 - Heizkreis 1: Party Solltemperatur (10..30)
 
         # Statistiken / Laufzeiten
-        'EinschaltungenSekundaer':  {'addr': '0504', 'len': 4, 'unit': 'IFNON',   'set': False},      # getAnzQuelleSek -- Statistik - Schaltzyklen Anlage: Einschaltungen Sekundaerquelle (?)
-        'EinschaltungenHeizstab1':  {'addr': '0508', 'len': 4, 'unit': 'IFNON',   'set': False},      # getAnzHeizstabSt1 -- Statistik - Schaltzyklen Anlage: Einschaltungen Heizstab Stufe 1 (?)
-        'EinschaltungenHeizstab2':  {'addr': '0509', 'len': 4, 'unit': 'IFNON',   'set': False},      # getAnzHeizstabSt2 -- Statistik - Schaltzyklen Anlage: Einschaltungen Heizstab Stufe 2 (?)
-        'EinschaltungenHK':         {'addr': '050D', 'len': 4, 'unit': 'IFNON',   'set': False},      # getAnzHK -- Statistik - Schaltzyklen Anlage: Einschaltungen Heizkreis (?)
-        'LZSekundaerpumpe':         {'addr': '0584', 'len': 4, 'unit': 'IF3600',  'set': False},      # getLZPumpeSek -- Statistik - Betriebsstunden Anlage: Betriebsstunden Sekundaerpumpe (?)
-        'LZHeizstab1':              {'addr': '0588', 'len': 4, 'unit': 'IF3600',  'set': False},      # getLZHeizstabSt1 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Heizstab Stufe 1 (?)
-        'LZHeizstab2':              {'addr': '0589', 'len': 4, 'unit': 'IF3600',  'set': False},      # getLZHeizstabSt2 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Heizstab Stufe 2 (?)
-        'LZPumpeHK':                {'addr': '058D', 'len': 4, 'unit': 'IFNON',   'set': False},      # getLZPumpe -- Statistik - Betriebsstunden Anlage: Betriebsstunden Pumpe HK1 (0..1150000)
-        'LZWWVentil':               {'addr': '0594', 'len': 4, 'unit': 'IF3600',  'set': False},      # getLZVentilWW -- Statistik - Betriebsstunden Anlage: Betriebsstunden Warmwasserventil (?)
-        'LZVerdichterStufe1':       {'addr': '1620', 'len': 4, 'unit': 'IFNON',   'set': False},      # getLZVerdSt1 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 1 (?)
-        'LZVerdichterStufe2':       {'addr': '1622', 'len': 4, 'unit': 'IFNON',   'set': False},      # getLZVerdSt2 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 2 (?)
-        'LZVerdichterStufe3':       {'addr': '1624', 'len': 4, 'unit': 'IFNON',   'set': False},      # getLZVerdSt3 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 3 (?)
-        'LZVerdichterStufe4':       {'addr': '1626', 'len': 4, 'unit': 'IFNON',   'set': False},      # getLZVerdSt4 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 4 (?)
-        'LZVerdichterStufe5':       {'addr': '1628', 'len': 4, 'unit': 'IFNON',   'set': False},      # getLZVerdSt5 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 5 (?)
-        'VorlauftempSekMittel':     {'addr': '16B2', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempSekVLMittel -- Statistik - Energiebilanz: mittlere sek. Vorlauftemperatur (0..95)
-        'RuecklauftempSekMittel':   {'addr': '16B3', 'len': 2, 'unit': 'IT10',    'set': False},      # getTempSekRLMittel -- Statistik - Energiebilanz: mittlere sek.Temperatur RL1 (0..95)
-        'OAT_Temperature':          {'addr': '1A5C', 'len': 1, 'unit': 'IFNON',   'set': False},      # getTempOAT -- OAT Temperature
-        'ICT_Temperature':          {'addr': '1A5D', 'len': 1, 'unit': 'IFNON',   'set': False},      # getTempICT -- OCT Temperature
-        'CCT_Temperature':          {'addr': '1A5E', 'len': 1, 'unit': 'IFNON',   'set': False},      # getTempCCT -- CCT Temperature
-        'HST_Temperature':          {'addr': '1A5F', 'len': 1, 'unit': 'IFNON',   'set': False},      # getTempHST -- HST Temperature
-        'OMT_Temperature':          {'addr': '1A60', 'len': 1, 'unit': 'IFNON',   'set': False},      # getTempOMT -- OMT Temperature
-        'LZVerdichterWP':           {'addr': '5005', 'len': 4, 'unit': 'IF3600',  'set': False},      # getLZWP -- Statistik - Betriebsstunden Anlage: Betriebsstunden Waermepumpe  (0..1150000)
-        'SollLeistungVerdichter':   {'addr': '5030', 'len': 1, 'unit': 'IFNON',   'set': False},      # getPwrSollVerdichter -- Diagnose - Anlagenuebersicht: Soll-Leistung Verdichter 1 (0..100)
+        'EinschaltungenSekundaer':  {'addr': '0504', 'len': 4, 'unit': 'IUNON',   'set': False},      # getAnzQuelleSek -- Statistik - Schaltzyklen Anlage: Einschaltungen Sekundaerquelle (?)
+        'EinschaltungenHeizstab1':  {'addr': '0508', 'len': 4, 'unit': 'IUNON',   'set': False},      # getAnzHeizstabSt1 -- Statistik - Schaltzyklen Anlage: Einschaltungen Heizstab Stufe 1 (?)
+        'EinschaltungenHeizstab2':  {'addr': '0509', 'len': 4, 'unit': 'IUNON',   'set': False},      # getAnzHeizstabSt2 -- Statistik - Schaltzyklen Anlage: Einschaltungen Heizstab Stufe 2 (?)
+        'EinschaltungenHK':         {'addr': '050D', 'len': 4, 'unit': 'IUNON',   'set': False},      # getAnzHK -- Statistik - Schaltzyklen Anlage: Einschaltungen Heizkreis (?)
+        'LZSekundaerpumpe':         {'addr': '0584', 'len': 4, 'unit': 'IU3600',  'set': False},      # getLZPumpeSek -- Statistik - Betriebsstunden Anlage: Betriebsstunden Sekundaerpumpe (?)
+        'LZHeizstab1':              {'addr': '0588', 'len': 4, 'unit': 'IU3600',  'set': False},      # getLZHeizstabSt1 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Heizstab Stufe 1 (?)
+        'LZHeizstab2':              {'addr': '0589', 'len': 4, 'unit': 'IU3600',  'set': False},      # getLZHeizstabSt2 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Heizstab Stufe 2 (?)
+        'LZPumpeHK':                {'addr': '058D', 'len': 4, 'unit': 'IUNON',   'set': False},      # getLZPumpe -- Statistik - Betriebsstunden Anlage: Betriebsstunden Pumpe HK1 (0..1150000)
+        'LZWWVentil':               {'addr': '0594', 'len': 4, 'unit': 'IU3600',  'set': False},      # getLZVentilWW -- Statistik - Betriebsstunden Anlage: Betriebsstunden Warmwasserventil (?)
+        'LZVerdichterStufe1':       {'addr': '1620', 'len': 4, 'unit': 'IUNON',   'set': False},      # getLZVerdSt1 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 1 (?)
+        'LZVerdichterStufe2':       {'addr': '1622', 'len': 4, 'unit': 'IUNON',   'set': False},      # getLZVerdSt2 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 2 (?)
+        'LZVerdichterStufe3':       {'addr': '1624', 'len': 4, 'unit': 'IUNON',   'set': False},      # getLZVerdSt3 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 3 (?)
+        'LZVerdichterStufe4':       {'addr': '1626', 'len': 4, 'unit': 'IUNON',   'set': False},      # getLZVerdSt4 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 4 (?)
+        'LZVerdichterStufe5':       {'addr': '1628', 'len': 4, 'unit': 'IUNON',   'set': False},      # getLZVerdSt5 -- Statistik - Betriebsstunden Anlage: Betriebsstunden Verdichter auf Stufe 5 (?)
+        'VorlauftempSekMittel':     {'addr': '16B2', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempSekVLMittel -- Statistik - Energiebilanz: mittlere sek. Vorlauftemperatur (0..95)
+        'RuecklauftempSekMittel':   {'addr': '16B3', 'len': 2, 'unit': 'IS10',    'set': False},      # getTempSekRLMittel -- Statistik - Energiebilanz: mittlere sek.Temperatur RL1 (0..95)
+        'OAT_Temperature':          {'addr': '1A5C', 'len': 1, 'unit': 'IUNON',   'set': False},      # getTempOAT -- OAT Temperature
+        'ICT_Temperature':          {'addr': '1A5D', 'len': 1, 'unit': 'IUNON',   'set': False},      # getTempICT -- OCT Temperature
+        'CCT_Temperature':          {'addr': '1A5E', 'len': 1, 'unit': 'IUNON',   'set': False},      # getTempCCT -- CCT Temperature
+        'HST_Temperature':          {'addr': '1A5F', 'len': 1, 'unit': 'IUNON',   'set': False},      # getTempHST -- HST Temperature
+        'OMT_Temperature':          {'addr': '1A60', 'len': 1, 'unit': 'IUNON',   'set': False},      # getTempOMT -- OMT Temperature
+        'LZVerdichterWP':           {'addr': '5005', 'len': 4, 'unit': 'IU3600',  'set': False},      # getLZWP -- Statistik - Betriebsstunden Anlage: Betriebsstunden Waermepumpe  (0..1150000)
+        'SollLeistungVerdichter':   {'addr': '5030', 'len': 1, 'unit': 'IUNON',   'set': False},      # getPwrSollVerdichter -- Diagnose - Anlagenuebersicht: Soll-Leistung Verdichter 1 (0..100)
     },
 }
 
 unitset = {
     'P300': {
-        'BA':      {'unit_de': 'Betriebsart',       'type': 'list',     'signed': False, 'read_value_transform': 'non'},
-        'CT':      {'unit_de': 'CycleTime',         'type': 'timer',    'signed': False, 'read_value_transform': 'non'},
-        'DT':      {'unit_de': 'DeviceType',        'type': 'list',     'signed': False, 'read_value_transform': 'non'},
-        'ES':      {'unit_de': 'ErrorState',        'type': 'list',     'signed': False, 'read_value_transform': 'non'},
-        'IF10':    {'unit_de': 'INT False 10',      'type': 'integer',  'signed': False, 'read_value_transform': '10'},
-        'IF2':     {'unit_de': 'INT False 2',       'type': 'integer',  'signed': False, 'read_value_transform': '2'},
-        'IF3600':  {'unit_de': 'INT False 3600',    'type': 'integer',  'signed': False, 'read_value_transform': '3600'},
-        'IFBOOL':  {'unit_de': 'INT False bool',    'type': 'integer',  'signed': False, 'read_value_transform': 'bool'},
-        'IFINT':   {'unit_de': 'INT False int',     'type': 'integer',  'signed': False, 'read_value_transform': 'int'},
-        'IFNON':   {'unit_de': 'INT False non',     'type': 'integer',  'signed': False, 'read_value_transform': 'non'},
-        'IT10':    {'unit_de': 'INT True 10',       'type': 'integer',  'signed': True,  'read_value_transform': '10'},
-        'IT100':   {'unit_de': 'INT True 100',      'type': 'integer',  'signed': True,  'read_value_transform': '100'},
-        'IT1000':  {'unit_de': 'INT True 1000',     'type': 'integer',  'signed': True,  'read_value_transform': '1000'},
-        'ITNON':   {'unit_de': 'INT True non',      'type': 'integer',  'signed': True,  'read_value_transform': 'non'},
-        'RT':      {'unit_de': 'ReturnStatus',      'type': 'list',     'signed': False, 'read_value_transform': 'non'},
-        'SC':      {'unit_de': 'SystemScheme',      'type': 'list',     'signed': False, 'read_value_transform': 'non'},
-        'SN':      {'unit_de': 'Sachnummer',        'type': 'serial',   'signed': False, 'read_value_transform': 'non'},
-        'SR':      {'unit_de': 'SetReturnStatus',   'type': 'list',     'signed': False, 'read_value_transform': 'non'},
-        'TI':      {'unit_de': 'SystemTime',        'type': 'datetime', 'signed': False, 'read_value_transform': 'non'},
-        'DA':      {'unit_de': 'Date',              'type': 'date',     'signed': False, 'read_value_transform': 'non'},
-    },
+        'BA':      {'unit_de': 'Betriebsart',       'type': 'list',     'signed': False, 'read_value_transform': 'non'},        # vito unit: BA
+        'CT':      {'unit_de': 'CycleTime',         'type': 'timer',    'signed': False, 'read_value_transform': 'non'},        # vito unit: CT
+        'DT':      {'unit_de': 'DeviceType',        'type': 'list',     'signed': False, 'read_value_transform': 'non'},        # vito unit: DT
+        'ES':      {'unit_de': 'ErrorState',        'type': 'list',     'signed': False, 'read_value_transform': 'non'},        # vito unit: ES
+        'IU2':     {'unit_de': 'INT unsigned 2',    'type': 'integer',  'signed': False, 'read_value_transform': '2'},          # vito unit: UT1U, PR1
+        'IU10':    {'unit_de': 'INT unsigned 10',   'type': 'integer',  'signed': False, 'read_value_transform': '10'},         # vito unit: 
+        'IU3600':  {'unit_de': 'INT unsigned 3600', 'type': 'integer',  'signed': False, 'read_value_transform': '3600'},       # vito unit: CS
+        'IUBOOL':  {'unit_de': 'INT unsigned bool', 'type': 'integer',  'signed': False, 'read_value_transform': 'bool'},       # vito unit: 
+        'IUINT':   {'unit_de': 'INT unsigned int',  'type': 'integer',  'signed': False, 'read_value_transform': 'int'},        # vito unit: 
+        'IUNON':   {'unit_de': 'INT unsigned non',  'type': 'integer',  'signed': False, 'read_value_transform': 'non'},        # vito unit: UTI, CO
+        'IS2':     {'unit_de': 'INT signed 2',      'type': 'integer',  'signed': True,  'read_value_transform': '2'},          # vito unit: UT1, PR
+        'IS10':    {'unit_de': 'INT signed 10',     'type': 'integer',  'signed': True,  'read_value_transform': '10'},         # vito unit: UT, UN
+        'IS100':   {'unit_de': 'INT signed 100',    'type': 'integer',  'signed': True,  'read_value_transform': '100'},        # vito unit: 
+        'IS1000':  {'unit_de': 'INT signed 1000',   'type': 'integer',  'signed': True,  'read_value_transform': '1000'},       # vito unit: 
+        'ISNON':   {'unit_de': 'INT signed non',    'type': 'integer',  'signed': True,  'read_value_transform': 'non'},        # vito unit: 
+        'RT':      {'unit_de': 'ReturnStatus',      'type': 'list',     'signed': False, 'read_value_transform': 'non'},        # vito unit: ST, RT
+        'SC':      {'unit_de': 'SystemScheme',      'type': 'list',     'signed': False, 'read_value_transform': 'non'},        # vito unit: 
+        'SN':      {'unit_de': 'Sachnummer',        'type': 'serial',   'signed': False, 'read_value_transform': 'non'},        # vito unit: 
+        'SR':      {'unit_de': 'SetReturnStatus',   'type': 'list',     'signed': False, 'read_value_transform': 'non'},        # vito unit: 
+        'TI':      {'unit_de': 'SystemTime',        'type': 'datetime', 'signed': False, 'read_value_transform': 'non'},        # vito unit: TI
+        'DA':      {'unit_de': 'Date',              'type': 'date',     'signed': False, 'read_value_transform': 'non'},        # vito unit: 
+    }
 }
 
 errorset = {

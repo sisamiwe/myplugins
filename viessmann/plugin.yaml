@@ -34,7 +34,11 @@ parameters:
 
     protocol:
         type: str
-        default: ''
+        mandatory: True
+        valid list:
+            - 'P300'
+            - 'GWG'
+            - 'KW2'
         description:
             de: 'Protokoll der Heizung'
             en: 'protocol of heating system'
