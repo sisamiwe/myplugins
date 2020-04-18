@@ -286,7 +286,8 @@ class Viessmann(SmartPlugin):
                 if not self.create_write_command(commandname, value):
                     # create_write_command() liefer False, wenn das Schreiben fehlgeschlagen ist
                     # -> dann auch keine weitere Verarbeitung
-                    self.log_debug("Write for {} with value {} failed, canceling followup actions".format(commandname, value))
+                    self.log_debug("Write for {} with value {} failed, reverting value, canceling followup actions".format(commandname, value))
+                    item(item.property.last_value, self.get_shortname())
                     return None
 
                 # If a read command should be sent after write
