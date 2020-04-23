@@ -101,22 +101,6 @@ class Viessmann(SmartPlugin):
             self.log_err('Sets {} for Heating type {} could not be found!'.format(", ".join(sets), self._heating_type))
             return None
 
-        # Remember protocol config
-        self._startbyte = self._int2bytes(self._controlset['StartByte'], 1)
-        self._request = self._int2bytes(self._controlset['Request'], 1)
-        self._response = self._int2bytes(self._controlset['Response'], 1)
-        self._error = self._int2bytes(self._controlset['Error'], 1)
-        self._read = self._int2bytes(self._controlset['Read'], 1)
-        self._write = self._int2bytes(self._controlset['Write'], 1)
-        self._functioncall = self._int2bytes(self._controlset['Function_Call'], 1)
-        self._acknowledge = self._int2bytes(self._controlset['Acknowledge'], 1)
-        self._notinitiated = self._int2bytes(self._controlset['Not_initiated'], 1)
-        self._initerror = self._int2bytes(self._controlset['Init_Error'], 1)
-        self._resetcommand = self._int2bytes(self._controlset['Reset_Command'], 1)
-        self._resetcommandresponse = self._int2bytes(self._controlset['Reset_Command_Response'], 1)
-        self._synccommand = self._int2bytes(self._controlset['Sync_Command'], 3)
-        self._synccommandresponse = self._int2bytes((self._controlset['Sync_Command_Response']), 1)
-
         # Init web interface
         self.init_webinterface()
 
@@ -158,27 +142,27 @@ class Viessmann(SmartPlugin):
         self.log_info('Init Communication....')
         is_initialized = False
         initstringsent = False
-        self._send_bytes(self._resetcommand)
+        self._send_bytes(self._int2bytes(self._controlset['Reset_Command'], 1))
         readbyte = self._read_bytes(1)
 
         for i in range(0, 10):
-            if initstringsent and (self._lastbyte == self._acknowledge):
+            if initstringsent and (self._lastbyte == self._int2bytes(self._controlset['Acknowledge'], 1)):
                 # Schnittstelle hat auf den Initialisierungsstring mit OK geantwortet. Die Abfrage von Werten kann beginnen. Diese Funktion meldet hierzu True zurück.
                 is_initialized = True
                 break
-            if self._lastbyte == self._acknowledge or self._lastbyte == self._notinitiated:
+            if self._lastbyte == self._int2bytes(self._controlset['Acknowledge'], 1) or self._lastbyte == self._int2bytes(self._controlset['Not_initiated'], 1):
                 # Schnittstelle ist zurückgesetzt und wartet auf Daten; Antwort b'\x05' = Warten auf Initialisierungsstring oder Antwort b'\x06' = Schnittstelle initialisiert
-                self._send_bytes(self._synccommand)
-                self.log_debug('send_bytes: Send sync command {}'.format(self._synccommand))
+                self._send_bytes(self._int2bytes(self._controlset['Sync_Command'], 3))
+                self.log_debug('send_bytes: Send sync command {}'.format(self._int2bytes(self._controlset['Sync_Command'], 3)))
                 initstringsent = True
-            elif self._lastbyte == self._initerror:
+            elif self._lastbyte == self._int2bytes(self._controlset['Init_Error'], 1):
                 self.log_err('The interface has reported an error (\x15), loop increment {}'.format(i))
-                self._send_bytes(self._resetcommand)
-                self.log_debug('send_bytes: Send reset command {}'.format(self._resetcommand))
+                self._send_bytes(self._int2bytes(self._controlset['Reset_Command'], 1))
+                self.log_debug('send_bytes: Send reset command {}'.format(self._int2bytes(self._controlset['Reset_Command'], 1)))
                 initstringsent = False
             else:
-                self._send_bytes(self._resetcommand)
-                self.log_debug('send_bytes: Send reset command {}'.format(self._resetcommand))
+                self._send_bytes(self._int2bytes(self._controlset['Reset_Command'], 1))
+                self.log_debug('send_bytes: Send reset command {}'.format(self._int2bytes(self._controlset['Reset_Command'], 1)))
                 initstringsent = False
             readbyte = self._read_bytes(1)
             self.log_debug('read_bytes: Read {}'.format(readbyte))
@@ -391,10 +375,10 @@ class Viessmann(SmartPlugin):
 
         # Build packet for read commands
         packet = bytearray()
-        packet.extend(self._startbyte)
+        packet.extend(self._int2bytes(self._controlset['StartByte'], 1))
         packet.extend(self._int2bytes(self._controlset['Command_bytes_read'], 1))
-        packet.extend(self._request)
-        packet.extend(self._read)
+        packet.extend(self._int2bytes(self._controlset['Request'], 1))
+        packet.extend(self._int2bytes(self._controlset['Read'], 1))
         packet.extend(bytes.fromhex(commandcode))
         packet.extend(self._int2bytes(commandvaluebytes, 1))
         packet.extend(self._int2bytes(self._calc_checksum(packet), 1))
@@ -494,10 +478,10 @@ class Viessmann(SmartPlugin):
 
                         # Build packet with value bytes for write commands
                         packet = bytearray()
-                        packet.extend(self._startbyte)
+                        packet.extend(self._int2bytes(self._controlset['StartByte'], 1))
                         packet.extend(self._int2bytes(payloadlength, 1))
-                        packet.extend(self._request)
-                        packet.extend(self._write)
+                        packet.extend(self._int2bytes(self._controlset['Request'], 1))
+                        packet.extend(self._int2bytes(self._controlset['Write'], 1))
                         packet.extend(bytes.fromhex(commandcode))
                         packet.extend(self._int2bytes(commandvaluebytes, 1, commandsigned))
                         packet.extend(valuebytes)
@@ -552,9 +536,9 @@ class Viessmann(SmartPlugin):
                     time.sleep(0.1)
                     self.log_debug('Received {} bytes chunk of response as hexstring {} and as bytes {}'.format(len(chunk), self.bytes2hexstring(chunk), chunk))
                     if len(chunk) != 0:
-                        if chunk[:1] == self._error:
+                        if chunk[:1] == self._int2bytes(self._controlset['Error'], 1):
                             self.log_err('Interface returned error! response was: {}'.format(chunk))
-                        elif chunk[:1] != self._acknowledge:
+                        elif chunk[:1] != self._int2bytes(self._controlset['Acknowledge'], 1):
                             self.log_err('Received invalid chunk, not starting with ACK! response was: {}'.format(chunk))
                         else:
                             # self.log_info('Received chunk! response was: {}, Hand over to parse_response now.format(chunk))
