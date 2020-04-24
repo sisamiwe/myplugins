@@ -107,6 +107,7 @@ class Viessmann(SmartPlugin):
     def _connect(self):
         self._lock.acquire()
         if self._connected and self._serial:
+            self._lock.release()
             return True
         try:
             self.log_info('Connecting ...')
